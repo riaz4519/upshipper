@@ -9,6 +9,19 @@ class CheckoutController extends Controller
     //
 
     public function index(){
-        return view('checkout.checkout');
+
+        $products  = [];
+        if (session()->exists('products')){
+            $products = session()->get('products');
+            $data['prices'] = array_column($products,'price');
+            //shipping charges
+            $data['shippingCharges'] = array_column(array_column($products,'shippingMethod'),'charge');
+
+
+        }
+
+        $data['products'] = $products;
+
+        return view('checkout.checkout')->with($data);
     }
 }

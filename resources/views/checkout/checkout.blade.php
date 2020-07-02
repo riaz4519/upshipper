@@ -131,72 +131,34 @@
             </div>
             <div class="col-md-6">
                 <h4 class="h4 col-xs-b25">your order</h4>
-                <div class="cart-entry clearfix">
-                    <a class="cart-entry-thumbnail" href="#"><img src="img/product-1.png" alt=""></a>
-                    <div class="cart-entry-description">
-                        <table>
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <div class="h6"><a href="#">modern beat ht</a></div>
-                                    <div class="simple-article size-1">QUANTITY: 2</div>
-                                </td>
-                                <td>
-                                    <div class="simple-article size-3 grey">$155.00</div>
-                                    <div class="simple-article size-1">TOTAL: $310.00</div>
-                                </td>
-                                <td>
-                                    <div class="cart-color" style="background: #eee;"></div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                @foreach($products as $index=>$product)
+
+                    <div class="cart-entry clearfix">
+                        <a class="cart-entry-thumbnail" href="#"><img style="max-width: 60px" src="{{ $product['image'] }}" alt=""></a>
+                        <div class="cart-entry-description">
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="h7"><a href="#">{{ substr($product['productTitle'],0,20)."..." }}</a></div>
+                                        <div class="simple-article size-1">QUANTITY: {{ $product['productQuantity'] }}</div>
+                                    </td>
+                                    <td>
+                                        <div class="simple-article size-3 grey">$155.00</div>
+                                        <div class="simple-article size-1">TOTAL: $310.00</div>
+                                    </td>
+                                    <td>
+                                        <div class="cart-color" style="background: #eee;"></div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
-                <div class="cart-entry clearfix">
-                    <a class="cart-entry-thumbnail" href="#"><img src="img/product-2.png" alt=""></a>
-                    <div class="cart-entry-description">
-                        <table>
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <div class="h6"><a href="#">modern beat ht</a></div>
-                                    <div class="simple-article size-1">QUANTITY: 2</div>
-                                </td>
-                                <td>
-                                    <div class="simple-article size-3 grey">$155.00</div>
-                                    <div class="simple-article size-1">TOTAL: $310.00</div>
-                                </td>
-                                <td>
-                                    <div class="cart-color" style="background: #bf584b;"></div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="cart-entry clearfix">
-                    <a class="cart-entry-thumbnail" href="#"><img src="img/product-3.png" alt=""></a>
-                    <div class="cart-entry-description">
-                        <table>
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <div class="h6"><a href="#">modern beat ht</a></div>
-                                    <div class="simple-article size-1">QUANTITY: 2</div>
-                                </td>
-                                <td>
-                                    <div class="simple-article size-3 grey">$155.00</div>
-                                    <div class="simple-article size-1">TOTAL: $310.00</div>
-                                </td>
-                                <td>
-                                    <div class="cart-color" style="background: #facc22;"></div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+
+                @endforeach
+
+
                 <div class="order-details-entry simple-article size-3 grey uppercase">
                     <div class="row">
                         <div class="col-xs-6">
