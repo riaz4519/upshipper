@@ -132,6 +132,14 @@ class ProductShowController extends Controller
 
     }
 
+    public function showSingleProduct(Request $request,$id){
+
+        if (session()->exists('products')){
+
+            return $request->session()->get('products')[$id];
+        }
+    }
+
 
 
 

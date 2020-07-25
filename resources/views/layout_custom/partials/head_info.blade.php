@@ -18,4 +18,6 @@
 
     <link rel="shortcut icon" href="{{  asset('image/up_shipper_logo.png') }}" />
     <title>Upshipper</title>
+
+
 </head>

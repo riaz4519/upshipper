@@ -11,6 +11,9 @@
 |
 */
 
+//show product modal
+Route::get('/show-product/{product_id}','ProductShowController@showSingleProduct');
+
 //send data
 Route::get('/product/aliexpress/{item}','ProductShowController@aliExpress')->name('product.aliexpress.item');
 Route::get('/product/','ProductShowController@detectShop')->name('detect.shop');
@@ -33,3 +36,7 @@ Route::post('remove/cart/{id}','CartController@remove')->name('cart.remove');
 
 //checkout
 Route::get('/checkout','CheckoutController@index')->name('checkout');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

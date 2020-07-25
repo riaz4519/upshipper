@@ -1,6 +1,8 @@
 
 {{--header --}}
 @include('layout_custom.partials.head_info')
+{{--css--}}
+@yield('css')
 
 <body class="fonts-1">
 
@@ -45,6 +47,7 @@
 
 @include('layout_custom.partials.footer_info')
 
+{{--script--}}
 @yield('scripts')
 
 

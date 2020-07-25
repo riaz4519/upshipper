@@ -1,5 +1,15 @@
 @extends('layout_custom.user_view')
 
+@section('css')
+
+    <style>
+        .show-product-modal:hover{
+            cursor: pointer;
+        }
+    </style>
+
+    @endsection
+
 @section('content')
 
     <div class="container">
@@ -35,9 +45,9 @@
             @foreach($products as $index=>$product)
             <tr>
                 <td data-title=" ">
-                    <a class="cart-entry-thumbnail" href="#"><img style="max-width: 60px" src="{{ $product['image'] }}" alt=""></a>
+                    <span class="cart-entry-thumbnail show-product-modal" data-cart-id="{{ $index }}"><img data-cart-id="{{$index}}" style="max-width: 60px" src="{{ $product['image'] }}" alt=""></span>
                 </td>
-                <td data-title=" "><h6 class="h6"><a href="#">{{ $product['productTitle'] }}</a></h6></td>
+                <td data-title=" " class="show-product-modal" data-cart-id="{{ $index }}"><h6 class="h6" data-cart-id="{{ $index }}">{{ $product['productTitle'] }}</h6></td>
                 <td data-title="Price: ">{{ "$ ".$product['price'] }}</td>
                 <td data-title="Quantity: ">
                     <div class="quantity-select">
@@ -164,5 +174,110 @@
         <div class="empty-space col-xs-b35 col-md-b70"></div>
     </div>
 
+    <div class="popup-wrapper">
+        <div class="bg-layer"></div>
+
+
+        <div class="popup-content" data-rel="2">
+            <div class="layer-close"></div>
+            <div class="popup-container size-1">
+                <div class="popup-align">
+                    <h3 class="h3 text-center">register</h3>
+                    <div class="empty-space col-xs-b30"></div>
+                    <input class="simple-input" type="text" value="" placeholder="Your name" />
+                    <div class="empty-space col-xs-b10 col-sm-b20"></div>
+                    <input class="simple-input" type="text" value="" placeholder="Your email" />
+                    <div class="empty-space col-xs-b10 col-sm-b20"></div>
+                    <input class="simple-input" type="password" value="" placeholder="Enter password" />
+                    <div class="empty-space col-xs-b10 col-sm-b20"></div>
+                    <input class="simple-input" type="password" value="" placeholder="Repeat password" />
+                    <div class="empty-space col-xs-b10 col-sm-b20"></div>
+                    <div class="row">
+                        <div class="col-sm-7 col-xs-b10 col-sm-b0">
+                            <div class="empty-space col-sm-b15"></div>
+                            <label class="checkbox-entry">
+                                <input type="checkbox" /><span><a href="#">Privacy policy agreement</a></span>
+                            </label>
+                        </div>
+                        <div class="col-sm-5 text-right">
+                            <a class="button size-2 style-3" href="#">
+                                <span class="button-wrapper">
+                                    <span class="icon"><img src="img/icon-4.png" alt="" /></span>
+                                    <span class="text">submit</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="button-close"></div>
+            </div>
+        </div>
+
+
+
+    </div>
+
 
 @endsection
+
+@section('scripts')
+
+    <script>
+        $(document).ready(function () {
+
+           $('.show-product-modal').on('click',function () {
+
+               var dataCartId = $(this).attr('data-cart-id')
+;
+              //send ajax request for getting cart data
+               $.ajax({
+                   url:"{{ url('/') }}"+'//show-product/'+dataCartId,
+                   type:"GET",
+                   dataType:"JSON",
+                   success:function (data) {
+                      $('.popup-wrapper').addClass('active');
+                      $('.product-show-modal').addClass('active');
+
+                      $('.product-modal-title').text(data.productTitle);
+                      $('.product-modal-image').attr('data-background',data.image);
+                      $('.product-modal-image').css("background-image", "url("+data.image+")");
+
+                      //product price
+                       $('.product-modal-price').text(data.currency+" "+data.price);
+
+
+                       $('.modal-product-show-sku').html('');
+
+                       $.each(data.productSku,function (key,value) {
+                          $('.modal-product-show-sku').append( '<div class="row col-xs-b40"> <div class="col-sm-3"> <div class="h6 detail-data-title">'+value.skuTitle+':</div> </div> <div class="col-sm-9"><div class="simple-article size-3">'+ value.skuValue +' </div></div> </div>')
+                       });
+
+                       //total price
+                       $('.modal-total-price').text(data.currency+" "+ (parseFloat(data.price) + parseFloat(data.shippingMethod.charge)));
+
+                       //shipping charge
+                       $('.modal_shipping_charge').text(data.shippingMethod.currency +" "+data.shippingMethod.charge);
+
+                       //shipping company
+
+                       $('.modal_shipping_company').text(data.shippingMethod.company);
+
+                       //shipping delivery time
+
+                       $('.modal_delivery_time').text(data.shippingMethod.deliveryTime);
+
+                       //product quantity
+
+                       $('.modal_product_quantity').text(data.productQuantity);
+                   }
+               })
+
+
+
+           })
+
+        })
+    </script>
+
+    @endsection
