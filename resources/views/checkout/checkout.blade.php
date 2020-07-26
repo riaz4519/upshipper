@@ -1,5 +1,13 @@
 @extends('layout_custom.user_view')
 
+@section('css')
+    <style>
+        .red-border{
+            border: 1px solid red;
+        }
+    </style>
+@endsection
+
 @section('content')
 
     <div class="container">
@@ -26,11 +34,11 @@
                 <div class="empty-space col-xs-b20"></div>
                 <div class="row m10">
                     <div class="col-sm-6">
-                        <input class="simple-input" type="text" value="" placeholder="First name" />
+                        <input class="simple-input firstName" type="text" value="" placeholder="First name" />
                         <div class="empty-space col-xs-b20"></div>
                     </div>
                     <div class="col-sm-6">
-                        <input class="simple-input" type="text" value="" placeholder="Last name" />
+                        <input class="simple-input lastName" type="text" value="" placeholder="Last name" />
                         <div class="empty-space col-xs-b20"></div>
                     </div>
                 </div>
@@ -136,12 +144,12 @@
                     <option selected="selected">Pay on Delivery</option>
 
                 </select>
-                <div class="empty-space col-xs-b10"></div>
+
                 <div class="empty-space col-xs-b30"></div>
-                <div class="button block size-2 style-3">
-                        <span class="button-wrapper">
+                <div class="button block size-2 style-3 place_order">
+                        <span class="button-wrapper ">
                             <span class="icon"><img src="img/icon-4.png" alt=""></span>
-                            <span class="text place_order">place order</span>
+                            <span class="text ">place order</span>
                         </span>
                     <input type="submit"/>
                 </div>
@@ -159,22 +167,75 @@
     <script>
         $(document).ready(function () {
 
-           var firstName =  $('.first_name').val();
-           var lastName = $('.last_name').val();
+            $('.place_order').on('click',function () {
+                let firstName =  $('.firstName').val();
+                let lastName = $('.lastName').val();
 
-           var address = $('.address').val();
-           var district = $('.district').val();
-           var thana  = $('.thana').val();
+                let address = $('.address').val();
+                let district = $('.district').val();
+                let thana  = $('.thana').val();
 
-           var postCode  = ('.zip_code').val();
+                let postCode  = $('.zip_code').val();
 
-           var email = $('.email').val();
-           var phone = $('.phone').val();
+                let email = $('.email').val();
+                let phone = $('.phone').val();
+
+                let note_order = $('.note_order').val();
 
 
 
 
-        })
+                if(firstName.length > 0 && lastName.length > 0 && address.length > 0 && district.length > 0 && thana.length > 0 && postCode.length >0 && email.length >0 && phone.length > 0){
+
+                    console.log('filled');
+
+                }else{
+
+                    if (firstName.length <1){
+                        $('.firstName').addClass('red-border');
+                    }
+
+                    if (lastName.length <1){
+                        $('.lastName').addClass('red-border');
+                    }
+
+                    if (address.length <1){
+                        $('.address').addClass('red-border');
+                    }
+
+                    if (district.length <1){
+                        $('.district').addClass('red-border');
+                    }
+
+                    if (thana.length <1){
+                        $('.thana').addClass('red-border');
+                    }
+
+                    if (postCode.length <1){
+                        $('.zip_code').addClass('red-border');
+                    }
+
+                    if (email.length <1){
+                        $('.email').addClass('red-border');
+                    }else{
+                        $('.email').css('border','1px solid red');
+                    }
+
+                    if (phone.length <1){
+                        $('.phone').addClass('red-border');
+                    }
+
+
+
+                }
+            })
+
+
+
+
+
+
+        });
     </script>
 
     @endsection
