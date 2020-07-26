@@ -76,25 +76,10 @@
         <div class="empty-space col-xs-b35"></div>
         <div class="row">
             <div class="col-sm-6 col-md-5 col-xs-b10 col-sm-b0">
-                <div class="single-line-form">
-                    <input class="simple-input" type="text" value="" placeholder="Enter your coupon code" />
-                    <div class="button size-2 style-3">
-                            <span class="button-wrapper">
-                                <span class="icon"><img src="img/icon-4.png" alt=""></span>
-                                <span class="text">submit</span>
-                            </span>
-                        <input type="submit" value="">
-                    </div>
-                </div>
+
             </div>
             <div class="col-sm-6 col-md-7 col-sm-text-right">
                 <div class="buttons-wrapper">
-                    <a class="button size-2 style-2" href="#">
-                            <span class="button-wrapper">
-                                <span class="icon"><img src="img/icon-2.png" alt=""></span>
-                                <span class="text">update cart</span>
-                            </span>
-                    </a>
                     <a class="button size-2 style-3" href="{{ route('checkout') }}">
                             <span class="button-wrapper">
                                 <span class="icon"><img src="img/icon-4.png" alt=""></span>
@@ -107,32 +92,7 @@
         <div class="empty-space col-xs-b35 col-md-b70"></div>
         <div class="row">
             <div class="col-md-6 col-xs-b50 col-md-b0">
-                <h4 class="h4 col-xs-b25">calculate shipping</h4>
-                <select class="SlectBox">
-                    <option disabled="disabled" selected="selected">Choose country for shipping</option>
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
-                </select>
-                <div class="empty-space col-xs-b20"></div>
-                <div class="row m10">
-                    <div class="col-sm-6">
-                        <input class="simple-input" type="text" value="" placeholder="State / Country" />
-                        <div class="empty-space col-xs-b20"></div>
-                    </div>
-                    <div class="col-sm-6">
-                        <input class="simple-input" type="text" value="" placeholder="Postcode / Zip" />
-                        <div class="empty-space col-xs-b20"></div>
-                    </div>
-                </div>
-                <div class="button size-2 style-2">
-                        <span class="button-wrapper">
-                            <span class="icon"><img src="img/icon-1.png" alt=""></span>
-                            <span class="text">update totals</span>
-                        </span>
-                    <input type="submit"/>
-                </div>
+
             </div>
             @if(session()->exists('products'))
             <div class="col-md-6">

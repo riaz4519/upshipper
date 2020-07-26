@@ -8,16 +8,6 @@
                 </div>
                 <div class="col-md-7 col-md-text-right">
                     <div class="entry"><a class="open-popup" data-rel="1"><b>login</b></a>&nbsp; or &nbsp;<a class="open-popup" data-rel="2"><b>register</b></a></div>
-                    <div class="entry language">
-                        <div class="title"><b>en</b></div>
-                        <div class="language-toggle header-toggle-animation">
-                            <a href="index1.html">fr</a>
-                            <a href="index1.html">ru</a>
-                            <a href="index1.html">it</a>
-                         {{--   <a href="index1.html">sp</a>--}}
-                        </div>
-                    </div>
-                    <div class="entry hidden-xs hidden-sm"><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i></a></div>
                     <div class="entry hidden-xs hidden-sm cart">
                         <a href="{{ url('/cart') }}">
                             <b class="hidden-xs">Your bag</b>
@@ -83,7 +73,7 @@
                                     <a class="button size-2 style-3" href="{{ url('/cart') }}">
                                                 <span class="button-wrapper">
                                                     <span class="icon"><img src="{{ asset('asset/img/icon-4.png') }}" alt=""></span>
-                                                    <span class="text">proceed to checkout</span>
+                                                    <span class="text">Proceed To Cart</span>
                                                 </span>
                                     </a>
                                 </div>

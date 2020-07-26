@@ -165,9 +165,6 @@
         });
 
 
-
-
-
        //when click add to cart button
        $('.add-to-card-data').on('click',function () {
           if ( !$('.buy-now-wrap').is("[aria-expanded]")){
@@ -223,6 +220,8 @@
                   }
               })
           }
-       })
+       });
+
+
     })
 </script>
